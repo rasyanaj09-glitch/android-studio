@@ -1,42 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://android.com"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
+    android:background="#FFFFFF"
+    android:padding="24dp"
     tools:context=".ngawiActivity">
+
+    <!-- Ikon Dekoratif atau Placeholder Gambar -->
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:src="@android:drawable/ic_menu_myplaces"
+        app:tint="#954040" />
 
     <TextView
         android:id="@+id/txtJudul"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Judul Perang"
-        android:textColor="#954040"
-        android:textSize="24sp"
+        android:textAlignment="center"
+        android:textColor="#2D3436"
+        android:textSize="28sp"
+        android:fontFamily="sans-serif-black"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/txtIsi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Deskripsi kejadian akan muncul di sini..."
-        android:textSize="16sp" />
+    <!-- Garis Pemisah Tipis -->
+    <View
+        android:layout_width="60dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="24dp"
+        android:background="#954040" />
 
-    <Button
-        android:id="@+id/btnLink"
-        android:layout_width="wrap_content"
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/txtIsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Deskripsi kejadian akan muncul di sini secara lengkap dan mendetail agar pembaca nyaman melihatnya..."
+            android:textColor="#636E72"
+            android:lineSpacingExtra="6dp"
+            android:textSize="16sp" />
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Tombol Aksi di Bagian Bawah -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Baca Selengkapnya (Wiki)" />
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnVideo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Tonton Video" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLink"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text=""
+            android:textAllCaps="false"
+            app:cornerRadius="12dp"
+            app:icon="@android:drawable/ic_menu_search"
+            app:backgroundTint="#954040" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnVideo"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="12dp"
+            android:text="Tonton Video"
+            android:textAllCaps="false"
+            android:textColor="#954040"
+            app:strokeColor="#954040"
+            app:cornerRadius="12dp"
+            app:icon="@android:drawable/ic_media_play"
+            app:iconTint="#954040" />
+    </LinearLayout>
 
 </LinearLayout>
