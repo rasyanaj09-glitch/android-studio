@@ -2,8 +2,16 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.widget.Button;
 import android.widget.EditText;
+=======
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+>>>>>>> f0cdb8b9331b91910eb04f8e8ecc03007a1481bb
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -12,6 +20,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+<<<<<<< HEAD
 import com.android.volley.Request;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -40,17 +49,28 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+=======
+public class MainActivity extends AppCompatActivity {
+EditText editnama,editemail,editpassword;
+Button btn;
+
+RadioGroup radioGroup;
+>>>>>>> f0cdb8b9331b91910eb04f8e8ecc03007a1481bb
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+<<<<<<< HEAD
 
+=======
+>>>>>>> f0cdb8b9331b91910eb04f8e8ecc03007a1481bb
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+<<<<<<< HEAD
 
 
         etEmailL = findViewById(R.id.etEmailL);
@@ -117,3 +137,33 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
+=======
+        editnama = findViewById(R.id.nama);
+        editemail = findViewById(R.id.email);
+        editpassword = findViewById(R.id.password);
+        btn = findViewById(R.id.btn);
+
+        btn.setOnClickListener(view -> { // Gunakan 'view' kecil (best practice)
+            String nama = editnama.getText().toString().trim();
+            String email = editemail.getText().toString().trim();
+            String password = editpassword.getText().toString().trim();
+
+            // Gunakan || (OR) supaya kalau SALAH SATU kosong, langsung kena tegur
+            if (nama.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Wajib di isi semua ya diks", Toast.LENGTH_SHORT).show();
+            }
+            // Gunakan && (Double AND) untuk logika yang benar
+            else if (nama.equals("budak1") && password.equals("aduhai") && email.equals("mamang")) {
+                Toast.makeText(this, "Berhasil loh ya re", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, MainRongngawi.class);
+                startActivity(intent);
+                finish();
+            }
+            else {
+                Toast.makeText(this, "Gagal cik, cek lagi datanya", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+}
+>>>>>>> f0cdb8b9331b91910eb04f8e8ecc03007a1481bb
