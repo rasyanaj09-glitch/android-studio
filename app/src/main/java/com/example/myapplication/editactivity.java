@@ -25,32 +25,38 @@ public class editactivity extends AppCompatActivity {
     EditText etName, etPrice, etStock;
     Button btnSaveProduct;
 
-
     String URL_UPDATE = "http://10.0.2.2:81/koneksi_icikiwir/update.php";
 
-
+    // Pastikan nama model data Anda adalah 'roduct' sesuai struktur file Anda
     roduct productData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+
+        // 1. PERBAIKAN UTAMA: Wajib memasang layout XML sebelum membaca komponen di bawahnya
+        // Catatan: Ganti 'activity_edit' dengan nama file XML layout edit Anda yang sebenarnya
+        setContentView(R.layout.activity_editactivity);
+
+        // 2. PERBAIKAN AMAN: Mengganti R.id.main menjadi android.R.id.content agar tidak crash lagi
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
+        // Inisialisasi komponen UI setelah setContentView dilakukan
         etName = findViewById(R.id.etName);
         etPrice = findViewById(R.id.etPrice);
         etStock = findViewById(R.id.etStock);
         btnSaveProduct = findViewById(R.id.btnSaveProduct);
 
-
+        // Menangkap objek data produk yang dilempar dari HomeActivity
         productData = (roduct) getIntent().getSerializableExtra("PRODUCT_DATA");
 
-
-        setupDataForUpdate();
+        // Menjalankan fungsi pengisian data lama ke kolom form input
+        Sukiliar();
 
         btnSaveProduct.setOnClickListener(view -> {
             String name = etName.getText().toString().trim();
@@ -74,7 +80,7 @@ public class editactivity extends AppCompatActivity {
                             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
                             if (status.equals("success") || status.equals("sukses")) {
-                                finish();
+                                finish(); // Kembali ke halaman daftar produk setelah sukses
                             }
                         } catch (Exception e) {
                             Toast.makeText(this, "JSON ERROR: " + e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -86,7 +92,7 @@ public class editactivity extends AppCompatActivity {
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<>();
 
-
+                    // Mengirimkan ID produk ke update.php agar server tahu baris mana yang diubah
                     if (productData != null) {
                         params.put("Id", String.valueOf(productData.getId()));
                     }
@@ -102,7 +108,7 @@ public class editactivity extends AppCompatActivity {
         });
     }
 
-    private void setupDataForUpdate() {
+    private void Sukiliar() {
         if (productData != null) {
             btnSaveProduct.setText("Simpan Perubahan");
             etName.setText(productData.getName());
