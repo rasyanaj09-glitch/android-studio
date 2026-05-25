@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:gravity="center_vertical">
+
+    <!-- Informasi Produk -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginTop="2dp" />
+
+        <TextView
+            android:id="@+id/tvStock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginTop="2dp" />
+    </LinearLayout>
+
+    <!-- ImageButton Edit dengan Logo Pena Bawaan -->
+    <ImageButton
+        android:id="@+id/btnEditRow"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@android:drawable/ic_menu_edit"
+        android:contentDescription="Tombol Edit"
+        android:background="?android:attr/selectableItemBackground"
+        app:tint="@android:color/holo_blue_dark"
+        xmlns:app="http://android.com"
+        android:layout_marginEnd="8dp" />
+
+    <!-- ImageButton Hapus dengan Logo Tempat Sampah Bawaan -->
+    <ImageButton
+        android:id="@+id/btnDeleteRow"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@android:drawable/ic_menu_delete"
+        android:contentDescription="Tombol Hapus"
+        android:background="?android:attr/selectableItemBackground"
+        app:tint="@android:color/holo_red_dark"
+        xmlns:app="http://android.com" />
+
+</LinearLayout>

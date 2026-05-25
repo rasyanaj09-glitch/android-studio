@@ -2,12 +2,12 @@ package com.example.myapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -21,6 +21,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -29,11 +31,11 @@ public class HomeActivity extends AppCompatActivity {
 
     ArrayList<roduct> productList = new ArrayList<>();
 
-    // 1. DIUBAH: Menggunakan penampung teks String dan ArrayAdapter bawaan Android
-    ArrayList<String> productNames = new ArrayList<>();
-    ArrayAdapter<String> adapter;
+    // GANTI ADAPTER: Menggunakan Custom Adapter tombol baris baru
+    ProductAdapter adapter;
 
     String URL_TAMPIL = "http://10.0.2.2:81/koneksi_icikiwir/get_produk.php";
+    String URL_DELETE = "http://10.0.2.2:81/koneksi_icikiwir/delete.php";;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +53,37 @@ public class HomeActivity extends AppCompatActivity {
         btntbh = findViewById(R.id.btntbh);
         btnlog = findViewById(R.id.btnlog);
 
-        // 2. DIUBAH: Setup adapter standar menggunakan layout default android simple_list_item_1
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, productNames);
+        // Pasang custom adapter dengan aksi tombol langsung per baris
+        // Cari bagian instansiasi adapter di HomeActivity.java lalu sesuaikan strukturnya:
+        adapter = new ProductAdapter(this, productList, new ProductAdapter.OnProductActionListener() {
+
+            @Override
+            public void onItemClick(roduct product) {
+                // Aksi saat satu baris produk diklik bebas
+                Toast.makeText(HomeActivity.this, "Anda memilih: " + product.getName(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onEdit(roduct product) {
+                Intent intent = new Intent(HomeActivity.this, TambahroductActivity.class);
+                intent.putExtra("IS_UPDATE", true);
+                intent.putExtra("PRODUCT_DATA", product);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onDelete(roduct product, int position) {
+                new AlertDialog.Builder(HomeActivity.this)
+                        .setTitle("Hapus Produk")
+                        .setMessage("Apakah Anda yakin ingin menghapus " + product.getName() + "?")
+                        .setPositiveButton("Ya", (d, w) -> deleteProductFromServer(product, position))
+                        .setNegativeButton("Tidak", null)
+                        .show();
+            }
+        });
+
         list.setAdapter(adapter);
+
 
         btntbh.setOnClickListener(view -> {
             Intent intent = new Intent(HomeActivity.this, TambahroductActivity.class);
@@ -77,6 +107,40 @@ public class HomeActivity extends AppCompatActivity {
         loadroduct();
     }
 
+    private void deleteProductFromServer(roduct product, int position) {
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                URL_DELETE,
+                response -> {
+                    try {
+                        JSONObject obj = new JSONObject(response);
+                        String status = obj.getString("status");
+                        String message = obj.getString("message");
+
+                        Toast.makeText(HomeActivity.this, message, Toast.LENGTH_SHORT).show();
+
+                        if (status.equals("success") || status.equals("sukses")) {
+                            // Hapus objek dari array list dan beritahu adapter
+                            productList.remove(position);
+                            adapter.notifyDataSetChanged();
+                        }
+                    } catch (Exception e) {
+                        Toast.makeText(HomeActivity.this, "JSON Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                },
+                error -> Toast.makeText(HomeActivity.this, "Error koneksi hapus: " + error.toString(), Toast.LENGTH_SHORT).show()
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("Id", String.valueOf(product.getId()));
+                return params;
+            }
+        };
+
+        Volley.newRequestQueue(this).add(request);
+    }
+
     private void loadroduct() {
         StringRequest stringRequest = new StringRequest(
                 Request.Method.GET,
@@ -88,27 +152,19 @@ public class HomeActivity extends AppCompatActivity {
 
                         if (status.equals("success")) {
                             productList.clear();
-                            productNames.clear(); // Bersihkan daftar teks lama
 
                             JSONArray jsonArray = jsonObject.getJSONArray("data");
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject obj = jsonArray.getJSONObject(i);
 
                                 roduct product = new roduct(
-                                        obj.getString("Id"),
-                                        obj.getString("CategoryId"),
+                                        obj.getInt("Id"),
                                         obj.getString("Name"),
-                                        obj.getString("Description"),
                                         obj.getString("Price"),
-                                        obj.getString("Stock"),
-                                        obj.getString("ImageUrl")
+                                        obj.getInt("Stock")
                                 );
 
                                 productList.add(product);
-
-                                // 3. DITAMBAHKAN: Menggabungkan data objek menjadi teks String multi-baris
-                                String infoProduk = product.getName() + "\nHarga: Rp " + product.getPrice() + "\nLink Foto: " + product.getImageUrl();
-                                productNames.add(infoProduk);
                             }
 
                             adapter.notifyDataSetChanged();
@@ -123,5 +179,11 @@ public class HomeActivity extends AppCompatActivity {
         );
 
         Volley.newRequestQueue(this).add(stringRequest);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadroduct();
     }
 }

@@ -1,29 +1,35 @@
 package com.example.myapplication;
 
-public class roduct {
-    private String id;
-    private String categoryId;
-    private String name;
-    private String description;
-    private String price;
-    private String stock;
-    private String imageUrl;
+import java.io.Serializable;
 
-    public roduct(String id, String categoryId, String name, String description, String price, String stock, String imageUrl) {
-        this.id = id;
-        this.categoryId = categoryId;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.stock = stock;
-        this.imageUrl = imageUrl;
+public class roduct implements Serializable {
+    public int Id;
+    public String Name;
+    public String Price;
+    public int Stock;
+
+    // Constructor Baru (Hanya 4 Parameter)
+    public roduct(int id, String name, String price, int stock) {
+        this.Id = id;
+        this.Name = name;
+        this.Price = price;
+        this.Stock = stock;
     }
 
-    public String getId() { return id; }
-    public String getCategoryId() { return categoryId; }
-    public String getName() { return name; }
-    public String getDescription() { return description; }
-    public String getPrice() { return price; }
-    public String getStock() { return stock; }
-    public String getImageUrl() { return imageUrl; }
+    // Getter yang disesuaikan
+    public int getId() {
+        return Id;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public String getPrice() {
+        return Price;
+    }
+
+    public int getStock() {
+        return Stock;
+    }
 }

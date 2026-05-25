@@ -3,9 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="android.com"
     xmlns:tools="android.com"
+    xmlns:tools2="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools2:ignore="NamespaceTypo">
 
     <!-- Dropdown Pilihan Kategori (Foreign Key) -->
     <Spinner

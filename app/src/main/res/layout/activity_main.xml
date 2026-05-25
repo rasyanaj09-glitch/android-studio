@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
-=======
     xmlns:app="http://android.com"
->>>>>>> f0cdb8b9331b91910eb04f8e8ecc03007a1481bb
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-<<<<<<< HEAD
     android:gravity="center_horizontal"
-    tools:context=".MainActivity">
+    android:background="#FAFAFA"
+    tools:context=".MainActivity"
+    tools:ignore="HardcodedText">
 
+    <!-- Judul Form -->
     <TextView
         android:id="@+id/tvLoginTitle"
         android:layout_width="wrap_content"
@@ -21,21 +20,22 @@
         android:text="Login Akun"
         android:textSize="28sp"
         android:textStyle="bold"
-        android:layout_marginTop="60dp" />
+        android:textColor="#333333"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="32dp" />
 
     <!-- Input Email -->
-
-    <!-- Input Password -->
-
     <EditText
         android:id="@+id/etEmailL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:hint="Email Address"
         android:inputType="textEmailAddress"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:importantForAutofill="no"
+        android:autofillHints="emailAddress" />
 
+    <!-- Input Password -->
     <EditText
         android:id="@+id/etPasswordL"
         android:layout_width="match_parent"
@@ -43,93 +43,28 @@
         android:layout_marginTop="16dp"
         android:hint="Password"
         android:inputType="textPassword"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:importantForAutofill="no"
+        android:autofillHints="password" />
 
-
+    <!-- Tombol Masuk / Login -->
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="32dp"
-        android:text="Manuk" />
+        android:layout_marginTop="40dp"
+        android:text="Masuk"
+        android:textSize="16sp" />
 
+    <!-- Tombol Navigasi ke Daftar / Register -->
     <Button
         android:id="@+id/btnregis"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="32dp"
-        android:text="Register" />
-=======
-    android:gravity="center_vertical"
-    android:background="#FAFAFA"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="32dp"
-        android:text="Form Perbudakan"
-        android:textColor="#333333"
-        android:textSize="28sp"
-        android:textStyle="bold" />
-
-    <!-- Input Nama -->
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nama Lengkap">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/nama"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName|textCapWords" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- Input Email -->
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:hint="Email">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- Input Password -->
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        app:passwordToggleEnabled="true"
-        android:hint="Password">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="32dp"
-        android:onClick="submitRegis"
-        android:text="Login Sekarang"
-        android:textSize="16sp"
-        app:cornerRadius="8dp"
-        tools:ignore="OnClick" />
->>>>>>> f0cdb8b9331b91910eb04f8e8ecc03007a1481bb
+        android:text="Belum punya akun? Register"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp" />
 
 </LinearLayout>
