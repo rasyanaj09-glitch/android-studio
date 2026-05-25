@@ -20,20 +20,21 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TambahroductActivity extends AppCompatActivity {
+public class editactivity extends AppCompatActivity {
 
     EditText etName, etPrice, etStock;
     Button btnSaveProduct;
 
-    String URL_TAMBAH = "http://10.0.2.2:81/koneksi_icikiwir/tambah.php";
+
+    String URL_UPDATE = "http://10.0.2.2:81/koneksi_icikiwir/update.php";
+
+
+    roduct productData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        // Pastikan nama file XML disesuaikan jika Anda mengubah nama activity ini
-        setContentView(R.layout.activity_tambahroduct);
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -44,6 +45,12 @@ public class TambahroductActivity extends AppCompatActivity {
         etPrice = findViewById(R.id.etPrice);
         etStock = findViewById(R.id.etStock);
         btnSaveProduct = findViewById(R.id.btnSaveProduct);
+
+
+        productData = (roduct) getIntent().getSerializableExtra("PRODUCT_DATA");
+
+
+        setupDataForUpdate();
 
         btnSaveProduct.setOnClickListener(view -> {
             String name = etName.getText().toString().trim();
@@ -57,7 +64,7 @@ public class TambahroductActivity extends AppCompatActivity {
 
             StringRequest request = new StringRequest(
                     Request.Method.POST,
-                    URL_TAMBAH,
+                    URL_UPDATE,
                     response -> {
                         try {
                             JSONObject obj = new JSONObject(response);
@@ -78,6 +85,12 @@ public class TambahroductActivity extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<>();
+
+
+                    if (productData != null) {
+                        params.put("Id", String.valueOf(productData.getId()));
+                    }
+
                     params.put("Name", name);
                     params.put("Price", price);
                     params.put("Stock", stock);
@@ -87,5 +100,14 @@ public class TambahroductActivity extends AppCompatActivity {
 
             Volley.newRequestQueue(this).add(request);
         });
+    }
+
+    private void setupDataForUpdate() {
+        if (productData != null) {
+            btnSaveProduct.setText("Simpan Perubahan");
+            etName.setText(productData.getName());
+            etPrice.setText(productData.getPrice());
+            etStock.setText(String.valueOf(productData.getStock()));
+        }
     }
 }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- Izin Wajib untuk Koneksi Volley ke Database PHP -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,48 +11,43 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true"
-        android:networkSecurityConfig="@xml/network_security_config"
         tools:targetApi="31">
-
+        <activity
+            android:name=".editactivity"
+            android:exported="false" />
         <!-- Daftar Semua Halaman Fitur Aplikasi Anda -->
         <activity
             android:name=".TambahroductActivity"
             android:exported="false" />
-
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
-
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
-
         <activity
             android:name=".jeskejes"
             android:exported="false" />
-
         <activity
             android:name=".ngawiActivity"
             android:exported="false" />
-
         <activity
             android:name=".MainRongngawi"
-            android:exported="false" />
-
-        <!-- Halaman Utama Saat Aplikasi Pertama Kali Dibuka (Login) -->
+            android:exported="false" /> <!-- Halaman Utama Saat Aplikasi Pertama Kali Dibuka (Login) -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

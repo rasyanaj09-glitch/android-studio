@@ -53,19 +53,18 @@ public class HomeActivity extends AppCompatActivity {
         btntbh = findViewById(R.id.btntbh);
         btnlog = findViewById(R.id.btnlog);
 
-        // Pasang custom adapter dengan aksi tombol langsung per baris
-        // Cari bagian instansiasi adapter di HomeActivity.java lalu sesuaikan strukturnya:
+       strukturnya:
         adapter = new ProductAdapter(this, productList, new ProductAdapter.OnProductActionListener() {
 
             @Override
             public void onItemClick(roduct product) {
-                // Aksi saat satu baris produk diklik bebas
+
                 Toast.makeText(HomeActivity.this, "Anda memilih: " + product.getName(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onEdit(roduct product) {
-                Intent intent = new Intent(HomeActivity.this, TambahroductActivity.class);
+                Intent intent = new Intent(HomeActivity.this, editactivity.class);
                 intent.putExtra("IS_UPDATE", true);
                 intent.putExtra("PRODUCT_DATA", product);
                 startActivity(intent);
@@ -76,7 +75,7 @@ public class HomeActivity extends AppCompatActivity {
                 new AlertDialog.Builder(HomeActivity.this)
                         .setTitle("Hapus Produk")
                         .setMessage("Apakah Anda yakin ingin menghapus " + product.getName() + "?")
-                        .setPositiveButton("Ya", (d, w) -> deleteProductFromServer(product, position))
+                        .setPositiveButton("Ya", (d, w) -> sukilete(product, position))
                         .setNegativeButton("Tidak", null)
                         .show();
             }
@@ -104,10 +103,10 @@ public class HomeActivity extends AppCompatActivity {
             finish();
         });
 
-        loadroduct();
+        talok();
     }
 
-    private void deleteProductFromServer(roduct product, int position) {
+    private void sukilete(roduct product, int position) {
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 URL_DELETE,
@@ -120,7 +119,7 @@ public class HomeActivity extends AppCompatActivity {
                         Toast.makeText(HomeActivity.this, message, Toast.LENGTH_SHORT).show();
 
                         if (status.equals("success") || status.equals("sukses")) {
-                            // Hapus objek dari array list dan beritahu adapter
+
                             productList.remove(position);
                             adapter.notifyDataSetChanged();
                         }
@@ -141,7 +140,7 @@ public class HomeActivity extends AppCompatActivity {
         Volley.newRequestQueue(this).add(request);
     }
 
-    private void loadroduct() {
+    private void talok() {
         StringRequest stringRequest = new StringRequest(
                 Request.Method.GET,
                 URL_TAMPIL,
@@ -184,6 +183,6 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        loadroduct();
+        talok();
     }
 }
