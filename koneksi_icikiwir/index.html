@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Clone - Full CSS Inline</title>
+</head>
+
+<body style="background-color: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; margin: 0; padding: 0; box-sizing: border-box;">
+
+    <!-- 1. HEADER / NAVBAR TOP -->
+    <header style="background-color: #161b22; border-bottom: 1px solid #30363d; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; font-size: 14px;">
+        <div style="display: flex; align-items: center; gap: 16px; width: 100%; max-width: 768px;">
+            <!-- Logo Tiruan -->
+            <div style="font-weight: bold; color: #ffffff; font-size: 18px; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                <span style="background-color: #ffffff; color: #000000; padding: 2px 6px; border-radius: 9999px; font-size: 12px;">Git</span>
+                <span>Hub</span>
+            </div>
+            <!-- Kolom Pencarian -->
+            <div style="width: 256px;">
+                <input type="text" placeholder="Type / to search" style="width: 100%; background-color: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 4px 12px; font-size: 12px; color: #9ca3af; outline: none;">
+            </div>
+            <!-- Menu Navigasi -->
+            <nav style="display: flex; gap: 16px; font-weight: 600; color: #d1d5db;">
+                <a href="#" style="color: #d1d5db; text-decoration: none;">Pull requests</a>
+                <a href="#" style="color: #d1d5db; text-decoration: none;">Issues</a>
+                <a href="#" style="color: #d1d5db; text-decoration: none;">Codespaces</a>
+                <a href="#" style="color: #d1d5db; text-decoration: none;">Marketplace</a>
+            </nav>
+        </div>
+        <!-- Sisi Kanan Header -->
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="color: #9ca3af; cursor: pointer;">🔔</span>
+            <span style="color: #9ca3af; cursor: pointer;">➕ <span style="font-size: 12px;">▼</span></span>
+            <div style="width: 24px; height: 24px; border-radius: 50%; background-color: #3b82f6; border: 1px solid #30363d; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #ffffff; font-weight: bold;">U</div>
+        </div>
+    </header>
+
+    <!-- 2. SUB-HEADER (NAMA REPO & NAVIGATION TABS) -->
+    <section style="background-color: #161b22; border-bottom: 1px solid #30363d; padding-top: 20px; padding-left: 24px; padding-right: 24px;">
+        <!-- Jalur Repositori -->
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 20px; font-weight: 400; color: #58a6ff;">
+                <a href="#" style="color: #58a6ff; text-decoration: none;">username</a>
+                <span style="color: #6b7280;">/</span>
+                <a href="#" style="font-weight: bold; color: #ffffff; text-decoration: none;">clone-github-tampilan</a>
+                <span style="font-size: 12px; color: #9ca3af; border: 1px solid #30363d; border-radius: 9999px; padding: 2px 8px; margin-left: 8px;">Public</span>
+            </div>
+            <!-- Tombol Aksi Kanan (Watch, Fork, Star) -->
+            <div style="display: flex; gap: 8px; font-size: 12px; font-weight: 500; color: #d1d5db;">
+                <button style="background-color: #21262d; border: 1px solid #30363d; padding: 4px 12px; border-radius: 6px; color: #ffffff; cursor: pointer;">👁️ Notifications</button>
+                <button style="background-color: #21262d; border: 1px solid #30363d; padding: 4px 12px; border-radius: 6px; color: #ffffff; cursor: pointer;">🍴 Fork <span style="background-color: #30363d; padding: 2px 6px; border-radius: 9999px; color: #9ca3af; margin-left: 4px;">12</span></button>
+                <button style="background-color: #21262d; border: 1px solid #30363d; padding: 4px 12px; border-radius: 6px; color: #ffffff; cursor: pointer;">⭐ Star <span style="background-color: #30363d; padding: 2px 6px; border-radius: 9999px; color: #9ca3af; margin-left: 4px;">84</span></button>
+            </div>
+        </div>
+        <!-- Tab Menu Internal -->
+        <div style="display: flex; gap: 24px; font-size: 14px; overflow-x: auto; white-space: nowrap;">
+            <a href="#" style="border-bottom: 2px solid #f97316; color: #ffffff; font-weight: 600; padding-bottom: 12px; padding-left: 4px; padding-right: 4px; text-decoration: none; display: flex; align-items: center; gap: 4px;"><span>💻</span> <span>Code</span></a>
+            <a href="#" style="color: #9ca3af; padding-bottom: 12px; padding-left: 4px; padding-right: 4px; text-decoration: none; display: flex; align-items: center; gap: 4px;"><span>🛑</span> <span>Issues</span></a>
+            <a href="#" style="color: #9ca3af; padding-bottom: 12px; padding-left: 4px; padding-right: 4px; text-decoration: none; display: flex; align-items: center; gap: 4px;"><span>🔀</span> <span>Pull requests</span></a>
+            <a href="#" style="color: #9ca3af; padding-bottom: 12px; padding-left: 4px; padding-right: 4px; text-decoration: none; display: flex; align-items: center; gap: 4px;"><span>▶️</span> <span>Actions</span></a>
+            <a href="#" style="color: #9ca3af; padding-bottom: 12px; padding-left: 4px; padding-right: 4px; text-decoration: none; display: flex; align-items: center; gap: 4px;"><span>📊</span> <span>Insights</span></a>
+        </div>
+    </section>
+
+    <!-- 3. MAIN CONTENT (LAYOUT GRID 2 KOLOM) -->
+    <main style="max-width: 1280px; margin: 0 auto; padding: 24px; display: grid; grid-template-columns: 3fr 1fr; gap: 24px;">
+
+        <!-- SISI KIRI: FILE EXPLORER -->
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+            <!-- Baris Kontrol Atas (Branch & Code Button) -->
+            <div style="display: flex; align-items: center; justify-content: space-between; font-size: 14px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <button style="background-color: #21262d; border: 1px solid #30363d; padding: 4px 12px; border-radius: 6px; display: flex; align-items: center; gap: 4px; color: #ffffff; cursor: pointer;">
+                        <span>🌿</span> <span style="font-weight: 600;">main</span> <span style="font-size: 12px; color: #9ca3af;">▼</span>
+                    </button>
+                    <span style="color: #9ca3af;"><strong style="color: #ffffff;">1</strong> Branch</span>
+                    <span style="color: #9ca3af;"><strong style="color: #ffffff;">14</strong> Commits</span>
+                </div>
+                <div>
+                    <button style="background-color: #238636; color: #ffffff; font-weight: 600; padding: 4px 16px; border-radius: 6px; border: none; cursor: pointer;">🟩 Code ▼</button>
+                </div>
+            </div>
+
+            <!-- Panel Info Komit Terakhir -->
+            <div style="background-color: #161b22; border: 1px solid #30363d; border-top-left-radius: 6px; border-top-right-radius: 6px; padding: 12px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #9ca3af;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <div style="width: 20px; height: 20px; border-radius: 50%; background-color: #16a34a; display: flex; align-items: center; justify-content: center; color: #ffffff; font-weight: bold; font-size: 10px;">U</div>
+                    <span style="color: #e5e7eb; font-weight: 600; cursor: pointer;">username</span>
+                    <span style="cursor: pointer;">Update struktur folder dan layout halaman utama dengan murni inline CSS</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="color: #58a6ff; cursor: pointer;">a1b2c3d</span>
+                    <span>• 2 hours ago</span>
+                </div>
+            </div>
+
+            <!-- Tabel Daftar File -->
+            <div style="background-color: #161b22; border-left: 1px solid #30363d; border-right: 1px solid #30363d; border-bottom: 1px solid #30363d; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; overflow: hidden; font-size: 14px;">
+                <!-- Baris File 1 -->
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px; border-bottom: 1px solid #30363d; background-color: #0d1117;">
+                    <div style="display: flex; align-items: center; gap: 12px; width: 30%;">
+                        <span>📁</span>
+                        <a href="#" style="color: #e5e7eb; text-decoration: none;">.github/workflows</a>
+                    </div>
+                    <div style="color: #9ca3af; width: 50%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Configure GitHub Actions for automated deployment</div>
+                    <div style="color: #6b7280; font-size: 12px; text-align: right; width: 20%;">3 days ago</div>
+                </div>
+                <!-- Baris File 2 -->
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px; border-bottom: 1px solid #30363d; background-color: #0d1117;">
+                    <div style="display: flex; align-items: center; gap: 12px; width: 30%;">
+                        <span>📁</span>
+                        <a href="#" style="color: #e5e7eb; text-decoration: none;">src</a>
+                    </div>
+                    <div style="color: #9ca3af; width: 50%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Add basic responsive grid components</div>
+                    <div style="color: #6b7280; font-size: 12px; text-align: right; width: 20%;">2 hours ago</div>
+                </div>
+                <!-- Baris File 3 -->
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px; border-bottom: 1px solid #30363d; background-color: #0d1117;">
+                    <div style="display: flex; align-items: center; gap: 12px; width: 30%;">
+                        <span>📄</span>
+                        <a href="#" style="color: #e5e7eb; text-decoration: none;">index.html</a>
+                    </div>
+                    <div style="color: #9ca3af; width: 50%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Initial commit for mockup UI layout</div>
+                    <div style="color: #6b7280; font-size: 12px; text-align: right; width: 20%;">2 hours ago</div>
+                </div>
+                <!-- Baris File 4 -->
+                <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px; background-color: #0d1117;">
+                    <div style="display: flex; align-items: center; gap: 12px; width: 30%;">
+                        <span>📄</span>
+                        <a href="#" style="color: #e5e7eb; text-decoration: none;">README.md</a>
+                    </div>
+                    <div style="color: #9ca3af; width: 50%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Update installation guide and project descriptions</div>
+                    <div style="color: #6b7280; font-size: 12px; text-align: right; width: 20%;">Yesterday</div>
+                </div>
+            </div>
+
+            <!-- Tampilan Box README -->
+            <div style="border: 1px solid #30363d; border-radius: 6px; background-color: #161b22; margin-top: 16px;">
+                <div style="padding: 12px; border-bottom: 1px solid #30363d; font-size: 12px; font-weight: 600; color: #d1d5db; display: flex; align-items: center; gap: 8px;">
+                    <span>📑</span> <span>README.md</span>
+                </div>
+                <div style="padding: 24px; color: #d1d5db; display: flex; flex-direction: column; gap: 16px;">
+                    <h1 style="font-size: 24px; font-weight: bold; border-bottom: 1px solid #30363d; padding-bottom: 8px; color: #ffffff; margin: 0;">Clone GitHub UI</h1>
+                    <p style="font-size: 14px; color: #9ca3af; margin: 0;">Proyek ini merupakan purwarupa (mockup) statis menggunakan sistem kode CSS murni inline agar mudah disalin tanpa file aset eksternal.</p>
+                    <div style="background-color: #0d1117; padding: 12px; border-radius: 6px; border: 1px solid #30363d; font-size: 12px; font-family: monospace; color: #4ade80;">
+                        $ git clone https://github.com
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SISI KANAN: ABOUT SECTION -->
+        <div style="display: flex; flex-direction: column; gap: 24px; font-size: 14px; color: #d1d5db;">
+            <!-- Deskripsi Singkat -->
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+                <h3 style="font-weight: bold; color: #ffffff; font-size: 16px; margin: 0;">About</h3>
+                <p style="color: #9ca3af; margin: 0;">Sebuah eksperimen pembuatan replika antarmuka web repositori GitHub murni untuk keperluan latihan desain UI/UX dengan pemformatan Inline CSS.</p>
+                <div style="padding-top: 8px; font-size: 12px; color: #9ca3af;">
+                    🔗 <a href="#" style="color: #58a6ff; text-decoration: none;">github-ui-inline.vercel.app</a>
+                </div>
+            </div>
+
+            <!-- Status Rilis / Releases -->
+            <div style="border-top: 1px solid #30363d; padding-top: 16px;">
+                <h3 style="font-weight: bold; color: #ffffff; margin: 0; margin-bottom: 8px;">Releases</h3>
+                <p style="font-size: 12px; color: #6b7280; margin: 0;">No releases published</p>
+            </div>
+
+            <!-- Daftar Bahasa Pemrograman -->
+            <div style="border-top: 1px solid #30363d; padding-top: 16px; display: flex; flex-direction: column; gap: 12px;">
+                <h3 style="font-weight: bold; color: #ffffff; margin: 0;">Languages</h3>
+                <div>
+                    <!-- Progress Bar Tiruan -->
+                    <div style="width: 100%; background-color: #374151; height: 8px; border-radius: 9999px; display: flex; overflow: hidden;">
+                        <div style="background-color: #f97316; height: 100%; width: 100%;"></div>
+                    </div>
+                    <!-- Label Persentase -->
+                    <div style="display: flex; gap: 16px; font-size: 12px; margin-top: 8px;">
+                        <span style="display: flex; align-items: center;"><span style="width: 8px; height: 8px; border-radius: 50%; background-color: #f97316; margin-right: 6px;"></span> HTML <strong style="color: #ffffff; margin-left: 4px;">100.0%</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+
+</html>
